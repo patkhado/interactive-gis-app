@@ -61,10 +61,28 @@
         <option value="landcover">Land Cover</option>
         <option value="satellite">Satellite Imagery</option>
       </select>
+        
+<div id="map" style="height: 500px; width: 100%; border-radius: 10px;"></div>
 
-      <div id="map">
-        <p>Your interactive map will be connected in a later step.</p>
-      </div>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+  const gisMap = L.map('map').setView([-25.7479, 28.2293], 10);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(gisMap);
+
+  L.marker([-25.7479, 28.2293])
+    .addTo(gisMap)
+    .bindPopup('Pretoria, South Africa')
+    .openPopup();
+</script> 
       <p id="message">Selected layer: NDVI — Vegetation</p>
     </section>
   </main>

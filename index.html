@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive GIS Explorer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+    header {
+      background: #123b2a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      padding: 24px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .panel {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #00000012;
+    }
+    select, button {
+      padding: 12px;
+      font-size: 16px;
+      margin-top: 8px;
+      max-width: 100%;
+    }
+    #map {
+      height: 400px;
+      margin-top: 20px;
+      border-radius: 10px;
+      background: #dbeafe;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Interactive GIS Explorer</h1>
+    <p>Explore satellite data and geographic information</p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Map Layers</h2>
+      <label for="layer">Choose a layer:</label><br>
+      <select id="layer">
+        <option value="ndvi">NDVI — Vegetation</option>
+        <option value="landcover">Land Cover</option>
+        <option value="satellite">Satellite Imagery</option>
+      </select>
+
+      <div id="map">
+        <p>Your interactive map will be connected in a later step.</p>
+      </div>
+      <p id="message">Selected layer: NDVI — Vegetation</p>
+    </section>
+  </main>
+
+  <script>
+    const selector = document.getElementById('layer');
+    const message = document.getElementById('message');
+
+    selector.addEventListener('change', function () {
+      message.textContent =
+        'Selected layer: ' +
+        selector.options[selector.selectedIndex].text;
+    });
+  </script>
+</body>
+</html>
